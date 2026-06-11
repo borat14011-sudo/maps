@@ -1,41 +1,214 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>CSR Exclusive Tables — Houston</title>
+<html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sapphire Reserve Exclusive Tables · Houston</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-html,body,#map{height:100%;margin:0}
-.legend{position:absolute;top:12px;right:12px;z-index:1000;background:#fff;padding:14px 18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.25);font:13px -apple-system,sans-serif;max-width:300px}
-.legend h3{margin:0 0 8px;font-size:15px;color:#1a3c6e}
-.legend div{margin:3px 0}
-.num{display:inline-block;width:18px;height:18px;background:#1a5cb0;color:#fff;border-radius:50%;text-align:center;line-height:18px;font-size:11px;font-weight:700;margin-right:6px}
-.title{position:absolute;top:12px;left:60px;z-index:1000;background:#1a5cb0;color:#fff;padding:10px 18px;border-radius:8px;font:700 16px -apple-system,sans-serif}
+html,body,#map{height:100%;margin:0;font-family:-apple-system,'Helvetica Neue',sans-serif}
+.titlebar{position:absolute;top:10px;left:54px;right:10px;z-index:1000;background:#1a5cb0;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.titlebar b{font-size:15px;display:block}
+.titlebar span{font-size:11px;opacity:.85}
+.legend{position:absolute;bottom:24px;left:10px;z-index:1000;background:rgba(255,255,255,.95);padding:10px 14px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.25);font-size:12px}
+.legend b{color:#1a5cb0}
+.leaflet-popup-content{max-width:280px!important;font-size:13px;line-height:1.45}
+.pp-name{font-size:15px;font-weight:700}
+.pp-name a{color:#1a5cb0;text-decoration:none}
+.pp-meta{color:#777;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;margin:2px 0 6px}
+.pp-price{font-weight:700;color:#b3502d}
+.pp-rating{color:#946200;font-weight:600}
+.pp-notes{margin:6px 0;color:#333}
+.gmaps-btn{display:inline-block;margin-top:6px;background:#1a5cb0;color:#fff!important;padding:7px 14px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px}
 </style></head><body>
 <div id="map"></div>
-<div class="title">Sapphire Reserve Exclusive Tables · Houston · $150 credit expires Jun 30</div>
-<div class="legend" id="legend"><h3>The 12</h3></div>
+<div class="titlebar"><b>Sapphire Reserve Exclusive Tables · Houston</b><span>$150 H1 credit expires Jun 30 · generated Jun 10, 2026 · tap a pin → Open in Google Maps</span></div>
+<div class="legend"><b>12 restaurants</b> · 1 group: CSR Exclusive Tables<br>★ ratings from Google · pins exact</div>
 <script>
-const spots = [
- ["March","Mediterranean tasting · $185-245",29.742874,-95.4001634,false],
- ["Rosie Cannonball","Euro comfort · $50-75",29.7428747,-95.400045,false],
- ["BCN Taste & Tradition","Catalan · $150-250",29.7348923,-95.3900899,false],
- ["Street To Kitchen","Thai · $60-80",29.738537,-95.311256,false],
- ["Turner's Cut","Steakhouse · $100-250",29.7440,-95.3980,true],
- ["Kiran's","Upscale Indian · $70-120",29.733355,-95.4226478,false],
- ["Brasserie 19","French · $60-90",29.753412,-95.4073494,false],
- ["ChopnBlok","West African · $40-60",29.7447567,-95.390318,false],
- ["Októ","Greek · $50-70",29.7400,-95.4536,true],
- ["Maximo","Progressive Mexican · $60-80",29.7155,-95.4130,true],
- ["Agnes and Sherman","Asian-American · $50-75",29.7910,-95.3980,true],
- ["Lee's","Italian aperitivo · $40-65",29.6950,-95.2850,true],
+const PLACES = [
+ {
+  "name": "March",
+  "category": "Mediterranean fine dining",
+  "hood": "Montrose",
+  "price": "$185-245",
+  "notes": "Houston's best room \u2014 tasting menus only. The H1-credit splurge.",
+  "lat": 29.7431485,
+  "lon": -95.4003814,
+  "rating": 4.6,
+  "reviews": 230,
+  "address": "1624 Westheimer Rd, Houston, TX 77006",
+  "website": "https://www.marchrestaurant.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=March%201624%20Westheimer%20Rd%2C%20Houston%2C%20TX%2077006"
+ },
+ {
+  "name": "Rosie Cannonball",
+  "category": "European comfort food",
+  "hood": "Montrose",
+  "price": "$50-75",
+  "notes": "Same block as March \u2014 wood-fired, casual, great pastas.",
+  "lat": 29.743058299999998,
+  "lon": -95.4003808,
+  "rating": 4.5,
+  "reviews": 731,
+  "address": "1620 Westheimer Rd, Houston, TX 77006",
+  "website": "https://www.rosiecannonball.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Rosie%20Cannonball%201620%20Westheimer%20Rd%2C%20Houston%2C%20TX%2077006"
+ },
+ {
+  "name": "BCN Taste & Tradition",
+  "category": "Catalan Spanish",
+  "hood": "Montrose",
+  "price": "$150-250",
+  "notes": "Old-world service in a 1920s house. Second splurge candidate.",
+  "lat": 29.7349267,
+  "lon": -95.39015649999999,
+  "rating": 4.7,
+  "reviews": 1258,
+  "address": "4210 Roseland St, Houston, TX 77006",
+  "website": "http://bcnhouston.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=BCN%20Taste%20%26%20Tradition%204210%20Roseland%20St%2C%20Houston%2C%20TX%2077006"
+ },
+ {
+  "name": "Street To Kitchen",
+  "category": "Authentic Thai",
+  "hood": "East End",
+  "price": "$60-80",
+  "notes": "James Beard buzz \u2014 unapologetically hot Thai.",
+  "lat": 29.7487095,
+  "lon": -95.3408187,
+  "rating": 4.5,
+  "reviews": 1109,
+  "address": "3401 Harrisburg Blvd Ste G, Houston, TX 77003",
+  "website": "https://www.streettokitchen.vip/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Street%20To%20Kitchen%203401%20Harrisburg%20Blvd%20Ste%20G%2C%20Houston%2C%20TX%2077003"
+ },
+ {
+  "name": "Turner's Cut",
+  "category": "American steakhouse",
+  "hood": "Montrose",
+  "price": "$100-250",
+  "notes": "Berg's glam steakhouse.",
+  "lat": 29.7580626,
+  "lon": -95.4051712,
+  "rating": 4.6,
+  "reviews": 279,
+  "address": "811 Buffalo Pk Dr Suite 160, Houston, TX 77019",
+  "website": "https://www.turnerscut.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Turner%27s%20Cut%20811%20Buffalo%20Pk%20Dr%20Suite%20160%2C%20Houston%2C%20TX%2077019"
+ },
+ {
+  "name": "Kiran's",
+  "category": "Upscale Indian",
+  "hood": "Upper Kirby",
+  "price": "$70-120",
+  "notes": "Elegant Indian, formal room.",
+  "lat": 29.7337915,
+  "lon": -95.4224064,
+  "rating": 4.4,
+  "reviews": 2317,
+  "address": "2925 Richmond Ave Suite 160, Houston, TX 77098",
+  "website": "http://kiranshouston.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Kiran%27s%202925%20Richmond%20Ave%20Suite%20160%2C%20Houston%2C%20TX%2077098"
+ },
+ {
+  "name": "Brasserie 19",
+  "category": "French brasserie",
+  "hood": "River Oaks",
+  "price": "$60-90",
+  "notes": "Oysters + people-watching, River Oaks scene.",
+  "lat": 29.753421,
+  "lon": -95.407249,
+  "rating": 4.4,
+  "reviews": 1306,
+  "address": "1962 W Gray St, Houston, TX 77019",
+  "website": "http://brasserie19.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Brasserie%2019%201962%20W%20Gray%20St%2C%20Houston%2C%20TX%2077019"
+ },
+ {
+  "name": "ChopnBlok",
+  "category": "West African Nigerian",
+  "hood": "Montrose",
+  "price": "$40-60",
+  "notes": "Modern West African bowls \u2014 Montrose Collective.",
+  "lat": 29.7442282,
+  "lon": -95.387676,
+  "rating": 4.7,
+  "reviews": 1271,
+  "address": "507 Westheimer Rd, Houston, TX 77006",
+  "website": "https://chopnblok.co/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=ChopnBlok%20507%20Westheimer%20Rd%2C%20Houston%2C%20TX%2077006"
+ },
+ {
+  "name": "Okt\u00f3",
+  "category": "Greek Mediterranean",
+  "hood": "River Oaks/Montrose",
+  "price": "$50-70",
+  "notes": "Aegean seafood, whole fish.",
+  "lat": 29.7450022,
+  "lon": -95.3902626,
+  "rating": 4.4,
+  "reviews": 221,
+  "address": "888 Westheimer Rd Ste 119, Houston, TX 77006",
+  "website": "https://www.oktorestaurant.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Okt%C3%B3%20888%20Westheimer%20Rd%20Ste%20119%2C%20Houston%2C%20TX%2077006"
+ },
+ {
+  "name": "Maximo",
+  "category": "Progressive Mexican",
+  "hood": "West U / Med Center",
+  "price": "$60-80",
+  "notes": "Handmade pastas meet Mexican technique.",
+  "lat": 29.7161233,
+  "lon": -95.43359009999999,
+  "rating": 4.7,
+  "reviews": 343,
+  "address": "6119 Edloe St, West University Place, TX 77005",
+  "website": "https://maximo-htx.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Maximo%206119%20Edloe%20St%2C%20West%20University%20Place%2C%20TX%2077005"
+ },
+ {
+  "name": "Agnes and Sherman",
+  "category": "Asian-American comfort",
+  "hood": "Houston Heights",
+  "price": "$50-75",
+  "notes": "Heights neighborhood favorite.",
+  "lat": 29.802722199999998,
+  "lon": -95.40104439999999,
+  "rating": 4.5,
+  "reviews": 332,
+  "address": "250 W 19th St A, Houston, TX 77008",
+  "website": "https://www.agnesandsherman.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Agnes%20and%20Sherman%20250%20W%2019th%20St%20A%2C%20Houston%2C%20TX%2077008"
+ },
+ {
+  "name": "Lee's",
+  "category": "Italian aperitivo bar",
+  "hood": "Southeast Houston",
+  "price": "$40-65",
+  "notes": "Aperitivo hour + handmade pasta.",
+  "lat": 29.7195555,
+  "lon": -95.4163497,
+  "rating": 4.4,
+  "reviews": 124,
+  "address": "5117 Kelvin Dr, Houston, TX 77005",
+  "website": "https://miltonandlees.com/",
+  "gmaps": "https://www.google.com/maps/search/?api=1&query=Lee%27s%205117%20Kelvin%20Dr%2C%20Houston%2C%20TX%2077005"
+ }
 ];
-const map = L.map('map').setView([29.738,-95.385],12);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OSM © CARTO'}).addTo(map);
-const legend = document.getElementById('legend');
-spots.forEach((s,i)=>{
-  const [name,desc,lat,lon,approx]=s;
-  const icon = L.divIcon({html:`<div style="background:#1a5cb0;color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font:700 13px sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)">${i+1}</div>`,className:'',iconSize:[26,26]});
-  L.marker([lat,lon],{icon}).addTo(map).bindPopup(`<b>${name}</b><br>${desc}${approx?'<br><i>(location approximate)</i>':''}`);
-  legend.innerHTML += `<div><span class="num">${i+1}</span>${name}${approx?' *':''}</div>`;
+const map = L.map('map');
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:19}).addTo(map);
+const markers = [];
+PLACES.forEach((p,i)=>{
+  const icon = L.divIcon({html:`<div style="background:#1a5cb0;color:#fff;width:32px;height:32px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center"><span style="transform:rotate(45deg);font:700 14px sans-serif">${i+1}</span></div>`,className:'',iconSize:[32,32],iconAnchor:[16,32],popupAnchor:[0,-30]});
+  const nameHtml = p.website ? `<a href="${p.website}" target="_blank">${p.name}</a>` : p.name;
+  const m = L.marker([p.lat,p.lon],{icon}).addTo(map).bindPopup(
+    `<div class="pp-name">${i+1}. ${nameHtml}</div>`+
+    `<div class="pp-meta">${p.category} · ${p.hood}</div>`+
+    `<div><span class="pp-price">${p.price}</span> · <span class="pp-rating">★ ${p.rating} (${p.reviews})</span></div>`+
+    `<div class="pp-notes">${p.notes}</div>`+
+    `<div style="font-size:11px;color:#888">${p.address}</div>`+
+    `<a class="gmaps-btn" href="${p.gmaps}" target="_blank">Open in Google Maps ↗</a>`
+  );
+  markers.push(m);
 });
-legend.innerHTML += '<div style="margin-top:6px;color:#888;font-size:11px">* approximate pin</div>';
+map.fitBounds(L.featureGroup(markers).getBounds().pad(0.1));
 </script></body></html>
