@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>CSR Exclusive Tables — Houston</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+html,body,#map{height:100%;margin:0}
+.legend{position:absolute;top:12px;right:12px;z-index:1000;background:#fff;padding:14px 18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.25);font:13px -apple-system,sans-serif;max-width:300px}
+.legend h3{margin:0 0 8px;font-size:15px;color:#1a3c6e}
+.legend div{margin:3px 0}
+.num{display:inline-block;width:18px;height:18px;background:#1a5cb0;color:#fff;border-radius:50%;text-align:center;line-height:18px;font-size:11px;font-weight:700;margin-right:6px}
+.title{position:absolute;top:12px;left:60px;z-index:1000;background:#1a5cb0;color:#fff;padding:10px 18px;border-radius:8px;font:700 16px -apple-system,sans-serif}
+</style></head><body>
+<div id="map"></div>
+<div class="title">Sapphire Reserve Exclusive Tables · Houston · $150 credit expires Jun 30</div>
+<div class="legend" id="legend"><h3>The 12</h3></div>
+<script>
+const spots = [
+ ["March","Mediterranean tasting · $185-245",29.742874,-95.4001634,false],
+ ["Rosie Cannonball","Euro comfort · $50-75",29.7428747,-95.400045,false],
+ ["BCN Taste & Tradition","Catalan · $150-250",29.7348923,-95.3900899,false],
+ ["Street To Kitchen","Thai · $60-80",29.738537,-95.311256,false],
+ ["Turner's Cut","Steakhouse · $100-250",29.7440,-95.3980,true],
+ ["Kiran's","Upscale Indian · $70-120",29.733355,-95.4226478,false],
+ ["Brasserie 19","French · $60-90",29.753412,-95.4073494,false],
+ ["ChopnBlok","West African · $40-60",29.7447567,-95.390318,false],
+ ["Októ","Greek · $50-70",29.7400,-95.4536,true],
+ ["Maximo","Progressive Mexican · $60-80",29.7155,-95.4130,true],
+ ["Agnes and Sherman","Asian-American · $50-75",29.7910,-95.3980,true],
+ ["Lee's","Italian aperitivo · $40-65",29.6950,-95.2850,true],
+];
+const map = L.map('map').setView([29.738,-95.385],12);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OSM © CARTO'}).addTo(map);
+const legend = document.getElementById('legend');
+spots.forEach((s,i)=>{
+  const [name,desc,lat,lon,approx]=s;
+  const icon = L.divIcon({html:`<div style="background:#1a5cb0;color:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;font:700 13px sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)">${i+1}</div>`,className:'',iconSize:[26,26]});
+  L.marker([lat,lon],{icon}).addTo(map).bindPopup(`<b>${name}</b><br>${desc}${approx?'<br><i>(location approximate)</i>':''}`);
+  legend.innerHTML += `<div><span class="num">${i+1}</span>${name}${approx?' *':''}</div>`;
+});
+legend.innerHTML += '<div style="margin-top:6px;color:#888;font-size:11px">* approximate pin</div>';
+</script></body></html>
