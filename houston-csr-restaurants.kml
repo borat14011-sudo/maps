@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+  <name>Sapphire Reserve Exclusive Tables — Houston</name>
+  <description>12 CSR dining-credit restaurants · $150 H1 credit expires Jun 30 2026</description>
+  <Style id="csrPin"><IconStyle><color>ffb05c1a</color><scale>1.2</scale>
+    <Icon><href>http://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href></Icon></IconStyle></Style>
+  <Placemark>
+    <name>1. March</name>
+    <description>Mediterranean fine dining · Montrose
+$185-245 · ★4.6 (230 reviews)
+Houston&#x27;s best room — tasting menus only. The H1-credit splurge.
+1624 Westheimer Rd, Houston, TX 77006
+https://www.marchrestaurant.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.4003814,29.7431485,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>2. Rosie Cannonball</name>
+    <description>European comfort food · Montrose
+$50-75 · ★4.5 (731 reviews)
+Same block as March — wood-fired, casual, great pastas.
+1620 Westheimer Rd, Houston, TX 77006
+https://www.rosiecannonball.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.4003808,29.743058299999998,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>3. BCN Taste &amp; Tradition</name>
+    <description>Catalan Spanish · Montrose
+$150-250 · ★4.7 (1258 reviews)
+Old-world service in a 1920s house. Second splurge candidate.
+4210 Roseland St, Houston, TX 77006
+http://bcnhouston.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.39015649999999,29.7349267,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>4. Street To Kitchen</name>
+    <description>Authentic Thai · East End
+$60-80 · ★4.5 (1109 reviews)
+James Beard buzz — unapologetically hot Thai.
+3401 Harrisburg Blvd Ste G, Houston, TX 77003
+https://www.streettokitchen.vip/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.3408187,29.7487095,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>5. Turner&#x27;s Cut</name>
+    <description>American steakhouse · Montrose
+$100-250 · ★4.6 (279 reviews)
+Berg&#x27;s glam steakhouse.
+811 Buffalo Pk Dr Suite 160, Houston, TX 77019
+https://www.turnerscut.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.4051712,29.7580626,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>6. Kiran&#x27;s</name>
+    <description>Upscale Indian · Upper Kirby
+$70-120 · ★4.4 (2317 reviews)
+Elegant Indian, formal room.
+2925 Richmond Ave Suite 160, Houston, TX 77098
+http://kiranshouston.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.4224064,29.7337915,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>7. Brasserie 19</name>
+    <description>French brasserie · River Oaks
+$60-90 · ★4.4 (1306 reviews)
+Oysters + people-watching, River Oaks scene.
+1962 W Gray St, Houston, TX 77019
+http://brasserie19.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.407249,29.753421,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>8. ChopnBlok</name>
+    <description>West African Nigerian · Montrose
+$40-60 · ★4.7 (1271 reviews)
+Modern West African bowls — Montrose Collective.
+507 Westheimer Rd, Houston, TX 77006
+https://chopnblok.co/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.387676,29.7442282,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>9. Októ</name>
+    <description>Greek Mediterranean · River Oaks/Montrose
+$50-70 · ★4.4 (221 reviews)
+Aegean seafood, whole fish.
+888 Westheimer Rd Ste 119, Houston, TX 77006
+https://www.oktorestaurant.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.3902626,29.7450022,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>10. Maximo</name>
+    <description>Progressive Mexican · West U / Med Center
+$60-80 · ★4.7 (343 reviews)
+Handmade pastas meet Mexican technique.
+6119 Edloe St, West University Place, TX 77005
+https://maximo-htx.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.43359009999999,29.7161233,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>11. Agnes and Sherman</name>
+    <description>Asian-American comfort · Houston Heights
+$50-75 · ★4.5 (332 reviews)
+Heights neighborhood favorite.
+250 W 19th St A, Houston, TX 77008
+https://www.agnesandsherman.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.40104439999999,29.802722199999998,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+    <name>12. Lee&#x27;s</name>
+    <description>Italian aperitivo bar · Southeast Houston
+$40-65 · ★4.4 (124 reviews)
+Aperitivo hour + handmade pasta.
+5117 Kelvin Dr, Houston, TX 77005
+https://miltonandlees.com/</description>
+    <styleUrl>#csrPin</styleUrl>
+    <Point><coordinates>-95.4163497,29.7195555,0</coordinates></Point>
+  </Placemark>
+</Document></kml>
