@@ -2,27 +2,22 @@
 <html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sapphire Reserve Exclusive Tables · Houston</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-html,body,#map{height:100%;margin:0;font-family:-apple-system,'Helvetica Neue',sans-serif}
-.titlebar{position:absolute;top:10px;left:54px;right:10px;z-index:1000;background:#1a5cb0;color:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.3)}
-.titlebar b{font-size:15px;display:block}
-.titlebar span{font-size:11px;opacity:.85}
-.legend{position:absolute;bottom:24px;left:10px;z-index:1000;background:rgba(255,255,255,.95);padding:10px 14px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.25);font-size:12px}
-.legend b{color:#1a5cb0}
-.leaflet-popup-content{max-width:280px!important;font-size:13px;line-height:1.45}
-.pp-name{font-size:15px;font-weight:700}
-.pp-name a{color:#1a5cb0;text-decoration:none}
-.pp-meta{color:#777;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;margin:2px 0 6px}
-.pp-price{font-weight:700;color:#b3502d}
-.pp-rating{color:#946200;font-weight:600}
-.pp-notes{margin:6px 0;color:#333}
-.gmaps-btn{display:inline-block;margin-top:6px;background:#1a5cb0;color:#fff!important;padding:7px 14px;border-radius:8px;text-decoration:none;font-weight:700;font-size:13px}
+html,body,#map{height:100%;margin:0;font-family:-apple-system,'Helvetica Neue',Roboto,sans-serif}
+.titlebar{position:absolute;top:10px;left:10px;right:60px;z-index:5;background:#fff;padding:10px 16px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+.titlebar b{font-size:15px;color:#1a73e8;display:block}
+.titlebar span{font-size:11.5px;color:#5f6368}
+.iw{max-width:280px;font-size:13px;line-height:1.45}
+.iw-name{font-size:15px;font-weight:700}
+.iw-name a{color:#1a73e8;text-decoration:none}
+.iw-meta{color:#5f6368;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;margin:2px 0 6px}
+.iw-price{font-weight:700;color:#b3502d}
+.iw-rating{color:#946200;font-weight:600}
+.iw-notes{margin:6px 0;color:#3c4043}
+.gmaps-btn{display:inline-block;margin-top:6px;background:#1a73e8;color:#fff!important;padding:8px 16px;border-radius:20px;text-decoration:none;font-weight:600;font-size:13px}
 </style></head><body>
 <div id="map"></div>
-<div class="titlebar"><b>Sapphire Reserve Exclusive Tables · Houston</b><span>$150 H1 credit expires Jun 30 · generated Jun 10, 2026 · tap a pin → Open in Google Maps</span></div>
-<div class="legend"><b>12 restaurants</b> · 1 group: CSR Exclusive Tables<br>★ ratings from Google · pins exact</div>
+<div class="titlebar"><b>Sapphire Reserve Exclusive Tables · Houston</b><span>12 restaurants · $150 H1 credit expires Jun 30 · Jun 10, 2026</span></div>
 <script>
 const PLACES = [
  {
@@ -194,21 +189,35 @@ const PLACES = [
   "gmaps": "https://www.google.com/maps/search/?api=1&query=Lee%27s%205117%20Kelvin%20Dr%2C%20Houston%2C%20TX%2077005"
  }
 ];
-const map = L.map('map');
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:19}).addTo(map);
-const markers = [];
-PLACES.forEach((p,i)=>{
-  const icon = L.divIcon({html:`<div style="background:#1a5cb0;color:#fff;width:32px;height:32px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center"><span style="transform:rotate(45deg);font:700 14px sans-serif">${i+1}</span></div>`,className:'',iconSize:[32,32],iconAnchor:[16,32],popupAnchor:[0,-30]});
-  const nameHtml = p.website ? `<a href="${p.website}" target="_blank">${p.name}</a>` : p.name;
-  const m = L.marker([p.lat,p.lon],{icon}).addTo(map).bindPopup(
-    `<div class="pp-name">${i+1}. ${nameHtml}</div>`+
-    `<div class="pp-meta">${p.category} · ${p.hood}</div>`+
-    `<div><span class="pp-price">${p.price}</span> · <span class="pp-rating">★ ${p.rating} (${p.reviews})</span></div>`+
-    `<div class="pp-notes">${p.notes}</div>`+
-    `<div style="font-size:11px;color:#888">${p.address}</div>`+
-    `<a class="gmaps-btn" href="${p.gmaps}" target="_blank">Open in Google Maps ↗</a>`
-  );
-  markers.push(m);
-});
-map.fitBounds(L.featureGroup(markers).getBounds().pad(0.1));
-</script></body></html>
+let map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    mapTypeControl: false, streetViewControl: true, fullscreenControl: true,
+    gestureHandling: "greedy",
+  });
+  const bounds = new google.maps.LatLngBounds();
+  const iw = new google.maps.InfoWindow();
+  PLACES.forEach((p, i) => {
+    const pos = {lat: p.lat, lng: p.lon};
+    bounds.extend(pos);
+    const marker = new google.maps.Marker({
+      position: pos, map, label: {text: String(i+1), color: "#fff", fontWeight: "700"},
+      title: p.name,
+    });
+    const nameHtml = p.website ? `<a href="${p.website}" target="_blank">${p.name}</a>` : p.name;
+    marker.addListener("click", () => {
+      iw.setContent(
+        `<div class="iw"><div class="iw-name">${i+1}. ${nameHtml}</div>`+
+        `<div class="iw-meta">${p.category} · ${p.hood}</div>`+
+        `<div><span class="iw-price">${p.price}</span> · <span class="iw-rating">★ ${p.rating} (${p.reviews})</span></div>`+
+        `<div class="iw-notes">${p.notes}</div>`+
+        `<div style="font-size:11px;color:#80868b">${p.address}</div>`+
+        `<a class="gmaps-btn" href="${p.gmaps}" target="_blank">Open in Google Maps ↗</a></div>`);
+      iw.open(map, marker);
+    });
+  });
+  map.fitBounds(bounds, 48);
+}
+</script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB57zrVk_ag5fy7LCyuvbo0PJWL56Eaczc&callback=initMap"></script>
+</body></html>
