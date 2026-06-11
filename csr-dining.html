@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sapphire Reserve Exclusive Tables · Houston</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sapphire Reserve Tables · Houston</title>
 <style>
-html,body,#map{height:100%;margin:0;font-family:-apple-system,'Helvetica Neue',Roboto,sans-serif}
-.titlebar{position:absolute;top:10px;left:10px;right:60px;z-index:5;background:#fff;padding:10px 16px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.28)}
-.titlebar b{font-size:15px;color:#1a73e8;display:block}
-.titlebar span{font-size:11.5px;color:#5f6368}
-.iw{max-width:280px;font-size:13px;line-height:1.45}
-.iw-name{font-size:15px;font-weight:700}
-.iw-name a{color:#1a73e8;text-decoration:none}
-.iw-meta{color:#5f6368;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;margin:2px 0 6px}
-.iw-price{font-weight:700;color:#b3502d}
-.iw-rating{color:#946200;font-weight:600}
-.iw-closed{display:inline-block;background:#fce8e6;color:#c5221f;font-weight:700;font-size:11px;border-radius:6px;padding:2px 8px;margin:4px 0}
-.iw-notes{margin:6px 0;color:#3c4043}
-.iw details{margin:4px 0;font-size:12px;color:#5f6368}
-.iw summary{cursor:pointer;font-weight:600;color:#1a73e8}
-.gmaps-btn{display:inline-block;margin-top:6px;background:#1a73e8;color:#fff!important;padding:8px 16px;border-radius:20px;text-decoration:none;font-weight:600;font-size:13px}
+:root{--blue:#1a73e8;--ink:#202124;--sub:#5f6368}
+html,body{height:100%;margin:0;font-family:-apple-system,'Helvetica Neue',Roboto,sans-serif;overflow:hidden}
+#map{position:absolute;inset:0}
+.chips{position:absolute;top:10px;left:10px;right:10px;z-index:5;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;background:#fff;border:1px solid #dadce0;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:600;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.15);cursor:pointer;white-space:nowrap}
+.chip.on{background:#e8f0fe;border-color:var(--blue);color:var(--blue)}
+.deck{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:10px 12px calc(12px + env(safe-area-inset-bottom));scrollbar-width:none}
+.deck::-webkit-scrollbar{display:none}
+.card{flex:0 0 78%;max-width:330px;scroll-snap-align:center;background:#fff;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.25);overflow:hidden;cursor:pointer}
+.card.hide{display:none}
+.card img{width:100%;height:110px;object-fit:cover;display:block;background:#e8eaed}
+.card .body{padding:10px 14px 12px}
+.card .nm{font-size:15px;font-weight:700;color:var(--ink)}
+.card .nm .n{color:var(--blue)}
+.card .meta{font-size:11.5px;color:var(--sub);margin:1px 0 4px}
+.card .row{font-size:12.5px;margin-bottom:2px}
+.price{font-weight:700;color:#b3502d}
+.stars{color:#946200;font-weight:600}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:1px}
+.badge.closed{background:#fce8e6;color:#c5221f}
+.badge.open{background:#e6f4ea;color:#137333}
+.go{display:inline-block;margin-top:6px;background:var(--blue);color:#fff!important;padding:6px 14px;border-radius:16px;text-decoration:none;font-weight:600;font-size:12.5px}
 </style></head><body>
 <div id="map"></div>
-<div class="titlebar"><b>Sapphire Reserve Exclusive Tables · Houston</b><span>12 restaurants · $150 H1 credit expires Jun 30 · only #7 Brasserie 19 &amp; #8 ChopnBlok open Sundays</span></div>
+<div class="chips" id="chips">
+  <div class="chip on" data-f="all">All 12</div>
+  <div class="chip" data-f="sunday">Open Sunday</div>
+  <div class="chip" data-f="splurge">Splurge $100+</div>
+  <div class="chip" data-f="casual">Casual</div>
+  <div class="chip" data-f="montrose">Montrose cluster</div>
+</div>
+<div class="deck" id="deck"></div>
 <script>
+const KEY = "AIzaSyB57zrVk_ag5fy7LCyuvbo0PJWL56Eaczc";
 const PLACES = [
  {
   "name": "March",
@@ -48,7 +64,8 @@ const PLACES = [
   "closed_days": [
    "Monday",
    "Sunday"
-  ]
+  ],
+  "photo": "places/ChIJEzo-VtLBQIYRAFxlZfioQC8/photos/AaVGc3mQC1TggJePs-sy79u1ehaYlBHfGCFHxTsHL6XtlDsYZ-4YvL4YaCHzAglfFn9P_wW3St3gXYTGh2nTD-nH1FKn_kBk6VewbFiR-aFGC1YmW2Vey-VxayyejeCtBfLim0jaMSzQ7tgPXJnwAabn_5N-b2YY_JIqYfVvYUimbiDm0czcZphwuEtpGQLaKFKqLDw5XAYY-H-684uLHlvM8VmbjQ7hW5DyeET5KtX8WA6BTCZJaDSRwDl0buASIqoIjfnRMLM8z5YEDSbQz6180BQ4-LIBNZXzeFgcpCMaD-605o51ovLWCHHzGWRoN_0YJ1Koppm9eDY4fA0xgCNeylSEE9F8JmVg4VdOth3x5FaIBXSe08El71LMEJnbS5Jjk9n3y_mgfI9MV0nk0goMiH-Cc_RKgz2z8P0RpNaWTe-gLA"
  },
  {
   "name": "Rosie Cannonball",
@@ -74,7 +91,8 @@ const PLACES = [
   ],
   "closed_days": [
    "Monday"
-  ]
+  ],
+  "photo": "places/ChIJxSwIIPPBQIYR14CfFqGFcr8/photos/AaVGc3mYgfHA2EBY-Zg0eANy5ohobTzmUDE0CGz9mOVl2lDNzE0tf9PdZ-rx_o2Zp_CIk9nMRK_6Jo52kDM0_vDi3Dp8AoJeD3ZVUboXGBX-XSRnXzvEnWoeLp4Jjw74l343udF1x6goz_inY395OADxFZ7wEotz5OHzazFlEHdJytK23DVdx8bXv61N2qh32lqr1GPytX1pcGAx_ZJIOZNcR4p7vjyrILGeDnrmpgEU5VEgdVxR9nt00mN5VisFtMJ98WVgZIbPpO6nPXxvjW5BIgEFpBSs-qbGVEfMkiwCW90EX1mvDboOMjFsIBVH0vkEkFzlxs2TXaCnmPchBg0NAh2JsRv_cDvW3dsjNM5y_UiIZu8VsuOdF2RuBBJnSBoc7RUo8Ae-5C07kE78E22DkClF3WTXRVjMQGrks6ixF77XSlfB"
  },
  {
   "name": "BCN Taste & Tradition",
@@ -100,7 +118,8 @@ const PLACES = [
   ],
   "closed_days": [
    "Sunday"
-  ]
+  ],
+  "photo": "places/ChIJjYk683y_QIYRVaLUbeMhExI/photos/AaVGc3muolUnZqNhGP9EnO-dsbCi1H_vP-in8vHb53sEFpDqaXyzZuxAKaGzs0CjeOxtEHxy7P3MkqmweHrz6AGxtkcPTr1hEJVffQNYP1pQmUkBezyAhFX8OXg0lxkdQ6dmjbZqAJ9L7qPg1QvAwu9Qd6lFHpAo-mPjnk_I-I8P58RNJ8Gn828tRP9f4QNwSZfDfgV4DvEDnfDcAwzadCTAdf4LhqKOwtr93V6sHL1pqEPxJWBwaI9mwsED-ejyUUay8Oqnr1serjbk-hlJOJjjnUv0h0oo1MhHJirKE8Obixf4ZAYgmvFyBhAWPlGLaQYMGp9Pt9SUo-hK-xLBJlci3DzdIK1oqV6rdLviTq0tmHAK2hztt6GtPjNrnRmJJiIh0YeExDXJL5ohQpbqZKkezLKFgXat4MLARwVN-_uQ-ek"
  },
  {
   "name": "Street To Kitchen",
@@ -126,7 +145,8 @@ const PLACES = [
   ],
   "closed_days": [
    "Sunday"
-  ]
+  ],
+  "photo": "places/ChIJWzyvLPC_QIYR2FaVjBujdlc/photos/AaVGc3maMhVVcmb0FpO_m98_NmXOlPTufDERuHHs-thSt1y8scDEqvVUwtiuJaP_JWb2LxVUhA_1MkK04IAY82hgcNNBwWsTFMoxhNtWHYB-5kS373BZFg0r6-4x_j70Tl0qN0YM4QNiULvsYG-MeS49z49jQ-IGoySNFGYZoB0obu0AWTuriSRCQbN9CWbSp2c17ZAbXydBaPKqiyXh1k1P6sOWBIQCjSfWnW_KQGEDjn-nk3Cv866FcFw16ixm00-132udjvSMi4dWzGwVUlhNb1CodCZnu6BC2d341YUQY4_OastXcAPnp6yVFuvQvyFVAZCOevVWLNh2xsXLfGKY3DEUw6dxqS9YrF-VOOe-fOjbj0BSML6O-3wtW9XTcx4cxLjzj6J8wfJSxy9wPd5QRlr51hHtM66FPUd5KGm1AM5s97iK"
  },
  {
   "name": "Turner's Cut",
@@ -153,7 +173,8 @@ const PLACES = [
   "closed_days": [
    "Monday",
    "Sunday"
-  ]
+  ],
+  "photo": "places/ChIJOetAPNHBQIYRBAmJZOskLVI/photos/AaVGc3le5SSObnrq4_UGlEASGfJfkTo2lL2J5BIwK8JssWp6_6iukklC3y0Z-h3Cwq1fqGkttakD_3qdsL8g5lWQ-SxPAder2TgNVLU0hFvtvSXHJOMXhRorjaAD0Jq9WgEUbjZcxG1j9SuR9Y-csuOZlhZdJR0kr3uSzXae70cOEGc98HHFsX-ynA-taZRpvK2mwZagG3uYJRTEMQxzv0BfxkUtpoxokySl5XnwVM8oFnp4r7iGiXW1W6tORCQaFhACtscQ-u9zvjf-hsUctZ-lXIOpV_gqwMFj20F-UY-vkENtZlhDFN0O4W3BPMobS4C-Pa2h_z63jLdWqHe_a-p3MRTXZUuIapVWWPlLdq73gpy7NMUcwgXSfZ2hFds-0T6uC3OGrADPa0sMRuPXVTFP3HuctS4KN0XLQNeH-DFKmXKLfcAdtnVD5lsS4l7G0cEi"
  },
  {
   "name": "Kiran's",
@@ -179,7 +200,8 @@ const PLACES = [
   ],
   "closed_days": [
    "Sunday"
-  ]
+  ],
+  "photo": "places/ChIJfZC_2BbBQIYRnyQ2EtjAymk/photos/AaVGc3nrKsxKPzYm4WjUAkspAXbDF4QYhF0R9iKMGaYPncUpliBQMQcMVvJYhrqX6OZN6c45HhkggQ7gzBSDNx52KNDJG5CkbdTjQ_2oLar2T3ppdSxAoXAF9v-12EiNoFhlB2i-IHcCJ4Se1xnhqs9sn5zh7zJovfpPba26oi87pd0eor1ztZhITG4vYAvcCoT-Vg7m3cNbBFqPPB22968M9djU5xJvf5SKxVytHX2WtkyplLTIXwo8dZzCtRHQbuRy3FVL1LsM2q2dW2I6cIyYgY97PWyCTpU3U9F83h-xR11n8qzZwSIA9Zb4mPeS-Dc6t1McNx54ld8jCHvzkQZAvWvcOLSgK6qp0eB4M6pt2xaP9bXSvvosHYdyUQdioJbyFbVOHpI3X0i4iTVQVvUbS2Z8D9zN6QXeP2ryn5j-e2CqqPF4"
  },
  {
   "name": "Brasserie 19",
@@ -203,7 +225,8 @@ const PLACES = [
    "Saturday: 11:00\u202fAM\u2009\u2013\u200911:00\u202fPM",
    "Sunday: 11:00\u202fAM\u2009\u2013\u20099:00\u202fPM"
   ],
-  "closed_days": []
+  "closed_days": [],
+  "photo": "places/ChIJ_1hXfLzAQIYRoq-Gyw9Hq2U/photos/AaVGc3kW96Q7eWqnvh0s-lPnKnUL6AhUF49iRzRZfPwePjYX_DYbd3okHtXDSzZWVMwy7thpQu75q6kxfF2ImRO8x4ay3vKoU7w3TpLLJS5spQXxIaCp4fF1r9D7_PsfVqEYa-orWdWu6BKWbMCbu5sbeTvdhiYpiLoy9_NYZ5F-j8GPwBI8bmtXFoPckpzS5JRfZIgDqgIwxQplulZZ4N4oMCu1Zicd8fd0-zHum4gxaKGMqeVJAKlTGHjycUGQ_cK_ypm-DScPjTVN8NGmIG-xyvTpiEe_7KJnmIM1_Uxun9vAce5RHSPDCPC0hMTvVOG-gIkZ7-1yYSmK3LZv1wPYqqJ8Yr88RcT2LRy5u226-j0vOjs1SWRX9-nOsNfnkK3Lo0atsdbz7u7TWlhH6HDRrynlfzWVWFsV6-di7qWfnFISyloPUnWWHwlAMweEfDoW"
  },
  {
   "name": "ChopnBlok",
@@ -227,7 +250,8 @@ const PLACES = [
    "Saturday: 11:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
    "Sunday: 11:00\u202fAM\u2009\u2013\u20099:00\u202fPM"
   ],
-  "closed_days": []
+  "closed_days": [],
+  "photo": "places/ChIJxaMpJga_QIYR8Z1M5d9BAR4/photos/AaVGc3knuT0qMFWTyv04dfCtAUw76mQVBNaOSkwDirAcg0eS1TaWrdGaQ5EYWdSsBVWbTF9IBjfrDS-_QgzFhKYBUtu8CRXcHBLCV6BR5mMqdjJ7NdRnbhQv8_Uz41jOUyTXE2zXROkz316eNb6Nstrt84hiJ9-423_J8lR6OaZGsm5ZBZQ4LfL-FzRRcZnz94OP6s-RcfLS_S84ls9F9JoYcRswfA-Duq_FATtQX1oEWYPP5cMLX1lEya_dubfA4_qfxsFauRDEo0a-eZRtf-kMe3JiToQddQgpbZYmdvswnHktiOSNQ62RnKICufa8ewjtML_pNLc7KPpESL3WXFoM-GyeruDpNajgLgUiZczBIgS5w9M-3fALhzzL-_1P4maXq0oT9keAgNu42x5-jZSmLNrab0thbgQJQsiuLvh5dxlVIejwpXlPlKWQW0dY-EB6"
  },
  {
   "name": "Okt\u00f3",
@@ -254,7 +278,8 @@ const PLACES = [
   "closed_days": [
    "Monday",
    "Sunday"
-  ]
+  ],
+  "photo": "places/ChIJkZT5cgC_QIYRw6w217D-l6w/photos/AaVGc3mJVMTX_exAfcqGYmKiMkjML4m9zvDRL7vE4T35VfGlp7NRS6b28IRo3RMW2nKiH97uFZxERXlqrRor3yM_q86n6g9HNGtH9FgEXTYtECSkh-iAt_Wxvxs_PqwximUMCc4arN9erMt8VnSzHARZ9BhBvdPgaXDvwAG1tqIJkx83iwwniYZolVwjKPCdlqmwlPCymUy5LSr68_el2NDyUP5rc6uN3tP3_0HkYTEk6_k7JR91bHz_GHUmVglJwd_qIMmgWcKXV31D8WT7awo3ex-b-IqbrdDSS-E6CVsX-JNqyrBOVD0I_6jKCeDeD8ef7kOtpyOG54StRhCjK7Ofh4PxXvldHiqimhVyWUgbN7NXW5qMTyeRatmdHbBgXwouSAWxJqqR4d2duvVTkb-EXH5N-LwkE94_xsYG6Nflp12Hdg"
  },
  {
   "name": "Maximo",
@@ -281,7 +306,8 @@ const PLACES = [
   "closed_days": [
    "Monday",
    "Tuesday"
-  ]
+  ],
+  "photo": "places/ChIJG24ysEPBQIYR53uqcTpBvEg/photos/AaVGc3nnnNoR3FK-vVQfJ_ycDU30GW_mRGEyoFrrHtXMwCuYU-WymN8PUTLoHRFpA4myBBjuCq8PGutSQY0gYt-km7Jn8QDhC0JEbUzqqEdxxBwbRQdyzsK77xue1OFC79REJfbkSGZzJKoVeujxiHZp5aVUUu-jutK1DVJ_2ZmALjl7oYgHLqoFHZMJoq-6d0i9IIqzeV6OMCjryXTL2ywRZdpZDm6ba9TdWgOzsx4EIN-AocoolmHcCNzeVfKYla0qK5tgfCeSII1D3bM7COge9cyDG3LizWGJNtEHQx3EUzw0BdsRDzjuQ80a6ryjbWKS3RXveyyrHCj55N6z_tV9BudKEiECOFpybpYyc728eLcGK5hmv4adXfA7HQ4xm6cYwqS-xjiH_Sry0kmsaq-7eNmlwMB2_cRby2245YPXvMoGvQ"
  },
  {
   "name": "Agnes and Sherman",
@@ -308,7 +334,8 @@ const PLACES = [
   "closed_days": [
    "Monday",
    "Tuesday"
-  ]
+  ],
+  "photo": "places/ChIJXdypGADHQIYR1mC9rCNApyA/photos/AaVGc3nErIVECAeO-GbZm5HfZqWp7viKBZh14RPEIqt8sK36iNcJDdKriLPVfNlCD46iACyENPiNOCMsoUL2Uo34Z5wOjdcV71d5jBEJ3D-EDce4Ur0Voi5gAdIx861fDV0b7gKrmTSLnJSsMlxUMkkTP5bK7ogO8QVXOjE-UDOI_QVyB9k7RlujipKzHrwi091bNBtE2KBmcNuzEoTR6Mb5_eS5BtfHjKWSSOaEvnRO_NV_9EdVaiXu4tnkViqf7YKy9rc_-3Ul-GoozSubB1zfvEVdlIbT8f5QZ1Kr3L_84Ud5Zgpy3RkU5jzdt_ZzYIXtBGxzs2iOiDuSABx_Vbk0kPT3_2cYjCNmbPLsDtTNVWxZn827uc7NFm008bNuVi21rbQnPV7BhZ2HbbuO_aVSySLfjaHfQOjYf8odfl7pPT0raiBPPfMgOl15BTpGRks4"
  },
  {
   "name": "Lee's",
@@ -336,40 +363,76 @@ const PLACES = [
    "Monday",
    "Tuesday",
    "Sunday"
-  ]
+  ],
+  "photo": "places/ChIJ_1zWwK3BQIYRZTSBzmX0u2A/photos/AaVGc3m3Z3xiV-cA1n2_mxJydwPxpy0GpzJPhCRDPTIYP2haZh7IwjAsM3kMjeNN-3HIVsEjMIJ_HjaM45T1VlDROwTzyclBieN-JpnwNmVrBsobBklRsEfZtP6oitoFC0KCLMckedleN_OWSk_V1kmHLOB232UExsz6L4-UL48RIYMj7LozuPpOzBdUdBNfyC5kvXegyZf5P03BYuOJoz7GRyDM3PfzU-VfAKYcJIo6POZ6pDMOai5ijK_a2WJORRNLDWmqILIzx_xbE4bPedh0xgckPTD6u-gx4JR7CnLeXeDVx2w-9Njkv0U1YCnFr5t9I2RoreVgqzkZtmiWThHmBsVuFxbXknL26n-EDJxcGFXU8BFbS88ahBL-rowSsZkNOLt1_Gf6oY1B6rB5ggHZH-6GLBchVbBFTLe4R8oCpVwLRMrpJX1LOzIewy2xIA"
  }
 ];
-let map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    mapTypeControl: false, streetViewControl: true, fullscreenControl: true,
-    gestureHandling: "greedy",
+PLACES.forEach((p,i)=>{
+  p.idx=i; p.splurge=/\$1\d\d/.test(p.price); p.sunday=!p.closed_days.includes("Sunday");
+  p.montrose=/Montrose|River Oaks/.test(p.hood);
+  p.photoUrl = p.photo ? `https://places.googleapis.com/v1/${p.photo}/media?maxWidthPx=500&key=${KEY}` : "";
+});
+let map, markers=[], iw, cur="all";
+function passes(p,f){return f==="all"||(f==="sunday"&&p.sunday)||(f==="splurge"&&p.splurge)||(f==="casual"&&!p.splurge)||(f==="montrose"&&p.montrose)}
+function initMap(){
+  map=new google.maps.Map(document.getElementById("map"),{mapId:"DEMO_MAP_ID",mapTypeControl:false,streetViewControl:false,fullscreenControl:false,gestureHandling:"greedy"});
+  iw=new google.maps.InfoWindow();
+  const b=new google.maps.LatLngBounds();
+  PLACES.forEach(p=>{
+    const pin=new google.maps.marker.PinElement({glyph:String(p.idx+1),glyphColor:"#fff",background:p.sunday?"#137333":"#1a73e8",borderColor:"#fff",scale:1.15});
+    const m=new google.maps.marker.AdvancedMarkerElement({position:{lat:p.lat,lng:p.lon},map,content:pin.element,title:p.name});
+    m.addListener("click",()=>focusPlace(p.idx,true));
+    markers.push(m); b.extend({lat:p.lat,lng:p.lon});
   });
-  const bounds = new google.maps.LatLngBounds();
-  const iw = new google.maps.InfoWindow();
-  PLACES.forEach((p, i) => {
-    const pos = {lat: p.lat, lng: p.lon};
-    bounds.extend(pos);
-    const marker = new google.maps.Marker({
-      position: pos, map, label: {text: String(i+1), color: "#fff", fontWeight: "700"}, title: p.name,
-    });
-    const nameHtml = p.website ? `<a href="${p.website}" target="_blank">${p.name}</a>` : p.name;
-    const closedBadge = p.closed_days.length ? `<div class="iw-closed">Closed ${p.closed_days.map(d=>d.slice(0,3)).join(" · ")}</div>` : `<div class="iw-closed" style="background:#e6f4ea;color:#137333">Open 7 days</div>`;
-    const hoursHtml = p.hours.length ? `<details><summary>Hours</summary>${p.hours.join("<br>")}</details>` : "";
-    marker.addListener("click", () => {
-      iw.setContent(
-        `<div class="iw"><div class="iw-name">${i+1}. ${nameHtml}</div>`+
-        `<div class="iw-meta">${p.category} · ${p.hood}</div>`+
-        `<div><span class="iw-price">${p.price}</span> · <span class="iw-rating">★ ${p.rating} (${p.reviews})</span></div>`+
-        closedBadge +
-        `<div class="iw-notes">${p.notes}</div>` + hoursHtml +
-        `<div style="font-size:11px;color:#80868b">${p.address}</div>`+
-        `<a class="gmaps-btn" href="${p.gmaps}" target="_blank">Open in Google Maps ↗</a></div>`);
-      iw.open(map, marker);
-    });
+  map.fitBounds(b,{top:70,bottom:230,left:30,right:30});
+  buildDeck();
+  document.getElementById("chips").addEventListener("click",e=>{
+    const c=e.target.closest(".chip"); if(!c)return;
+    document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on")); c.classList.add("on");
+    cur=c.dataset.f; applyFilter();
   });
-  map.fitBounds(bounds, 48);
+}
+function buildDeck(){
+  const d=document.getElementById("deck");
+  d.innerHTML=PLACES.map(p=>`
+   <div class="card" id="card-${p.idx}" onclick="focusPlace(${p.idx},false)">
+     ${p.photoUrl?`<img loading="lazy" src="${p.photoUrl}" onerror="this.style.display='none'">`:""}
+     <div class="body">
+       <div class="nm"><span class="n">${p.idx+1}.</span> ${p.name}<span class="badge ${p.sunday?'open':'closed'}">${p.sunday?'Sun ✓':'Closed '+p.closed_days.map(x=>x.slice(0,3)).join('·')}</span></div>
+       <div class="meta">${p.category} · ${p.hood}</div>
+       <div class="row"><span class="price">${p.price}</span> · <span class="stars">★ ${p.rating} (${p.reviews})</span></div>
+       <div class="row" style="color:var(--sub)">${p.notes}</div>
+       <a class="go" href="${p.gmaps}" target="_blank" onclick="event.stopPropagation()">Open in Google Maps ↗</a>
+     </div>
+   </div>`).join("");
+  // sync: card scrolled into center -> pan map
+  let t; d.addEventListener("scroll",()=>{clearTimeout(t);t=setTimeout(()=>{
+    const mid=d.scrollLeft+d.clientWidth/2;
+    let best=null,bd=1e9;
+    document.querySelectorAll(".card:not(.hide)").forEach(c=>{
+      const cm=c.offsetLeft+c.offsetWidth/2, dd=Math.abs(cm-mid);
+      if(dd<bd){bd=dd;best=c}
+    });
+    if(best){const p=PLACES[+best.id.split("-")[1]];map.panTo({lat:p.lat,lng:p.lon})}
+  },150)});
+}
+function focusPlace(i,fromPin){
+  const p=PLACES[i];
+  map.panTo({lat:p.lat,lng:p.lon}); if(map.getZoom()<14)map.setZoom(14);
+  const card=document.getElementById("card-"+i);
+  card.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"});
+  card.animate([{boxShadow:"0 0 0 3px #1a73e8"},{boxShadow:"0 4px 16px rgba(0,0,0,.25)"}],{duration:1200});
+}
+function applyFilter(){
+  const b=new google.maps.LatLngBounds(); let any=false;
+  PLACES.forEach(p=>{
+    const ok=passes(p,cur);
+    markers[p.idx].map=ok?map:null;
+    document.getElementById("card-"+p.idx).classList.toggle("hide",!ok);
+    if(ok){b.extend({lat:p.lat,lng:p.lon});any=true}
+  });
+  if(any)map.fitBounds(b,{top:70,bottom:230,left:30,right:30});
 }
 </script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB57zrVk_ag5fy7LCyuvbo0PJWL56Eaczc&callback=initMap"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB57zrVk_ag5fy7LCyuvbo0PJWL56Eaczc&libraries=marker&callback=initMap"></script>
 </body></html>
