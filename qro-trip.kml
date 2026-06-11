@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document>
+<name>Querétaro · Sep 3-8 2026</name><Style id="g_home"><IconStyle><color>ff2539d9</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style><Style id="g_eat"><IconStyle><color>ffe87316</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style><Style id="g_sight"><IconStyle><color>ffe63493</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style><Style id="g_daytrip"><IconStyle><color>ff0a71e8</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style><Style id="g_relax"><IconStyle><color>ff337313</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle></Style>
+  <Placemark><name>1. La Casa de la Marquesa</name>
+    <description>Home base · $180-260/nt
+1756 mansion, two emperors slept here. Crib + courtyard suite requested.
+C. Francisco I. Madero 41, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_home</styleUrl>
+    <Point><coordinates>-100.3934422,20.5918922,0</coordinates></Point></Placemark>
+  <Placemark><name>2. Tikua Sur-Este</name>
+    <description>Dinner · 6-8 PM (reserve) · $40-70
+Best kitchen in the city — mole negro by candlelight.
+C. Ignacio Allende Sur 13, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.39323270000001,20.591013099999998,0</coordinates></Point></Placemark>
+  <Placemark><name>3. Mercado de la Cruz</name>
+    <description>Morning · 9-10:30 AM · $10-18 cash
+Carnitas + fresh juice where Querétaro actually eats.
+Mercado Josefa Ortiz de Dominguez &quot;La Cruz&quot; (sobre, C/ 15 de Mayo, Centro, 76020 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.38583609999999,20.5981222,0</coordinates></Point></Placemark>
+  <Placemark><name>4. Hank&#x27;s New Orleans Café</name>
+    <description>Dinner · 6:30-8:30 PM · $45-75
+Gumbo + chargrilled oysters; baby-proof noise floor.
+Calle Benito Juárez Sur, Acceso por la, Pl. Constitución 7, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.3918839,20.591930299999998,0</coordinates></Point></Placemark>
+  <Placemark><name>5. El Mesón de Chucho el Roto</name>
+    <description>Long lunch · 1:30-4 PM · $30-55
+Enchiladas queretanas ON Plaza de Armas.
+Av. Luis Pasteur Sur 16, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.3893559,20.592754499999998,0</coordinates></Point></Placemark>
+  <Placemark><name>6. 1810</name>
+    <description>Golden hour · 6-8 PM · $40-70
+Arrachera + the plaza&#x27;s best corner table.
+And. Libertad 62, Centro Histórico, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.38947689999999,20.592633499999998,0</coordinates></Point></Placemark>
+  <Placemark><name>7. San Miguelito</name>
+    <description>Dinner · 6-8 PM · $35-60
+Folk-art fever dream — MC stares at the ceilings.
+C. 5 de Mayo 39, Centro Histórico, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.3905874,20.593173399999998,0</coordinates></Point></Placemark>
+  <Placemark><name>8. Breton</name>
+    <description>Breakfast · 8:30-11 AM · $20-35
+French bakery on the prettiest car-free lane.
+And. Libertad 82, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.38864190000001,20.5928263,0</coordinates></Point></Placemark>
+  <Placemark><name>9. María y Su Bici</name>
+    <description>Casual lunch · 12:30-3 PM · $30-50
+Coal-fired tlayudas, pink horchata.
+C. 5 de Mayo 91, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.38783439999999,20.5941124,0</coordinates></Point></Placemark>
+  <Placemark><name>10. La Mariposa</name>
+    <description>Merienda · 5-6:30 PM · $8-15
+1940s time capsule — hot chocolate + gorditas de nata.
+Angela Peralta 7, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.39250899999999,20.594615899999997,0</coordinates></Point></Placemark>
+  <Placemark><name>11. Café del Fondo</name>
+    <description>Rainy hour · any · $6-12
+Bohemian roaster, lecheros poured from height.
+Calle José María Pino Suárez 53, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.3951065,20.5899411,0</coordinates></Point></Placemark>
+  <Placemark><name>12. Cervecería Hércules</name>
+    <description>Lazy afternoon · 1-4 PM · $25-45
+Beer garden in a 19th-c. textile mill — built for families.
+Av. Hércules Ote. 1, Hercules, 76069 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_eat</styleUrl>
+    <Point><coordinates>-100.35651560000001,20.598941900000003,0</coordinates></Point></Placemark>
+  <Placemark><name>13. Vinaltura</name>
+    <description>Wine-route lunch · 1-3:30 PM (reserve) · $50-80
+Wood-fired vineyard terrace — Kathryn&#x27;s day.
+Ignacio Zaragoza, Sta Rosa de Lima S/N, 76290 Qro., Mexico</description><styleUrl>#g_daytrip</styleUrl>
+    <Point><coordinates>-99.9827902,20.6641153,0</coordinates></Point></Placemark>
+  <Placemark><name>14. Quesos VAI</name>
+    <description>Wine-route stop · 12-1 PM · $15-25
+Artisan cheese farm — buy the ash-rind wedge.
+Carr. Querétaro-Tequisquiapan, Km. 30, 76270 Colón, Qro., Mexico</description><styleUrl>#g_daytrip</styleUrl>
+    <Point><coordinates>-100.12368699999999,20.597944,0</coordinates></Point></Placemark>
+  <Placemark><name>15. Peña de Bernal</name>
+    <description>Sat 8:30 AM start · free
+World&#x27;s 3rd-largest monolith; gorditas at the market comals. Carrier-only.
+Benito Juárez, Zona Centro, 76000 Bernal, Qro., Mexico</description><styleUrl>#g_daytrip</styleUrl>
+    <Point><coordinates>-99.9412038,20.740885499999997,0</coordinates></Point></Placemark>
+  <Placemark><name>16. Freixenet México</name>
+    <description>11 AM tour (reserve) · ~$20 tour
+Cava cellars at constant 60°F — babies sleep through it.
+Carretera San Juan del Río - Cadereyta Km. 40.5 Los Perez, 76686 Ezequiel Montes, Qro., Mexico</description><styleUrl>#g_daytrip</styleUrl>
+    <Point><coordinates>-99.8776489,20.697416999999998,0</coordinates></Point></Placemark>
+  <Placemark><name>17. Tequisquiapan plaza</name>
+    <description>Optional · 3-4 PM · free
+Pink chapel + bougainvillea loop, ice cream.
+Independencia 5-7, Centro, 76750 Tequisquiapan, Qro., Mexico</description><styleUrl>#g_daytrip</styleUrl>
+    <Point><coordinates>-99.8915631,20.5225594,0</coordinates></Point></Placemark>
+  <Placemark><name>18. Plaza de Armas</name>
+    <description>Golden hour · 5-6:30 PM daily · free
+The living room — box laurels, fountain, evening paseo.
+Plaza de Armas, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.3897143,20.5929975,0</coordinates></Point></Placemark>
+  <Placemark><name>19. Andador 5 de Mayo</name>
+    <description>Any hour · free
+Pedestrian spine — the stroller superhighway.
+And. 5 de Mayo, Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.3908048,20.5931382,0</coordinates></Point></Placemark>
+  <Placemark><name>20. Jardín Zenea</name>
+    <description>Evenings · 6-7:30 PM · free
+Kiosk, danzón, the churro cart that ends every day.
+C. 16 de Septiembre 8-24, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.3921082,20.5930315,0</coordinates></Point></Placemark>
+  <Placemark><name>21. Templo de Santa Rosa de Viterbo</name>
+    <description>Morning light · 9-10:30 AM · free
+The baroque masterpiece — inverted flying buttresses.
+José María Arteaga 89, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.3963273,20.587763400000004,0</coordinates></Point></Placemark>
+  <Placemark><name>22. Templo de Santa Clara</name>
+    <description>Morning · 9-10 AM · free
+Plain outside, gold-drenched inside. 10 minutes of awe.
+Jardin Guerrero 8, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.3945174,20.5920313,0</coordinates></Point></Placemark>
+  <Placemark><name>23. Templo de la Santa Cruz</name>
+    <description>Morning · 10-11:30 AM · free
+Founding hill + miracle-thorn tree, quiet cloisters.
+C. Damián Carmona 5, La Santa Cruz, La Cruz, 76020 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.383682,20.5931429,0</coordinates></Point></Placemark>
+  <Placemark><name>24. Teatro de la República</name>
+    <description>With plaza visit · 10 min · free
+Where the 1917 Constitution was signed.
+Juárez y Ángela Peralta •, Centro •, 76008 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.3927502,20.59433,0</coordinates></Point></Placemark>
+  <Placemark><name>25. Museo de Arte de Querétaro</name>
+    <description>Midday A/C · 12-2 PM · ~$3
+Mexico&#x27;s most beautiful baroque courtyard.
+C. Ignacio Allende Sur 14, Centro, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.3934107,20.5909562,0</coordinates></Point></Placemark>
+  <Placemark><name>26. Cerro de las Campanas</name>
+    <description>Morning · 9-11 AM · ~$1
+Maximilian&#x27;s last hill — shaded stroller paths, city views.
+Cerro de las Campanas, Centro Universitario, 76017 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.4092734,20.5928676,0</coordinates></Point></Placemark>
+  <Placemark><name>27. Alameda Hidalgo</name>
+    <description>Late afternoon · 4:30-6 PM · free
+The flattest, shadiest stroller mile in the city.
+Av. Constituyentes s/n, Centro Histórico, 76000 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.38788240000001,20.5878814,0</coordinates></Point></Placemark>
+  <Placemark><name>28. Mirador de los Arcos</name>
+    <description>Sunset · 7:15 PM · free
+74 aqueduct arches burning orange — THE photo.
+Ejército Republicano 47, La Santa Cruz, La Pastora, 76025 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_sight</styleUrl>
+    <Point><coordinates>-100.38015019999999,20.592951199999998,0</coordinates></Point></Placemark>
+  <Placemark><name>29. Doña Urraca Spa</name>
+    <description>Book ahead · 2-4 PM · ~$90
+Kathryn&#x27;s spa hour while MC naps with Dad.
+C. 5 de Mayo 117, La Santa Cruz, La Cruz, 76020 Santiago de Querétaro, Qro., Mexico</description><styleUrl>#g_relax</styleUrl>
+    <Point><coordinates>-100.38645869999999,20.594513,0</coordinates></Point></Placemark>
+</Document></kml>
